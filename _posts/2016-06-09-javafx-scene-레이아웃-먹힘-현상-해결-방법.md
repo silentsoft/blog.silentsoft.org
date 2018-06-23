@@ -1,0 +1,34 @@
+---
+title: '[JavaFx] Scene 레이아웃 먹힘 현상 해결 방법'
+layout: post
+permalink: /archives/17
+categories: programming
+tags: javafx
+comments: true
+---
+Stage에 Scene을 지정할 때 Stage의 사이즈가 디자인한 Scene보다 작을 때가 있다.
+
+아래와 같이 분명히 Scene을 생성할 때 파라메터로 가로 사이즈와 세로 사이즈를 줬음에도 말이다.
+
+```
+// Scene setting
+Scene scene = new Scene(root, root.prefWidth(0), root.prefHeight(0));
+stage.setScene(scene);
+
+// Center position
+stage.setX(owner.getX() + (owner.getWidth() / 2) - (scene.getWidth() / 2));
+stage.setY(owner.getY() + (owner.getHeight() / 2) - (scene.getHeight() / 2));
+```
+
+이럴 때에는 Scene을 생성할 때 가로 사이즈와 세로 사이즈를 지정하지 않으면 된다.
+
+```
+// Scene setting
+stage.setScene(new Scene(root));
+
+// Center position
+stage.setX(owner.getX() + (owner.getWidth() / 2) - (root.prefWidth(0) / 2));
+stage.setY(owner.getY() + (owner.getHeight() / 2) - (root.prefHeight(0) / 2));
+```
+
+또 한가지 특이한 점은 첫 번째 코드에서 Scene을 생성한 후에 scene.getWidth() 메서드와 scene.getHeight() 메서드를 통해 사이즈를 가져왔지만, 디버깅해보면 0이다. 생성한 Scene에서 사이즈를 가져오지 말고, 두 번째 코드처럼 root(Parent)에서 가져와야 한다.
