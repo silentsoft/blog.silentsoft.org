@@ -1,0 +1,135 @@
+.sidebar-bg {
+  background: #fff center / cover;
+}
+.sidebar-bg .sidebar-overlay {
+  background-size: cover;
+}
+
+.sidebar-box {
+  display: flex;
+  justify-content: center;
+}
+.me {
+  width: 6.5rem;
+  height: 6.5rem;
+  align-self: center;
+  margin-right: 20px;
+  border-radius: 100%;
+  position: relative;
+
+  @media screen and (min-width: $break-point-1) {
+    width: 7rem;
+    height: 7rem;
+  }
+
+  @media screen and (min-width: $break-point-2) {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+
+  @media screen and (min-width: $break-point-3) {
+    width: 7rem;
+    height: 7rem;
+  }
+}
+
+
+.sidebar-sticky {
+  // <<<<< INLINE
+  position: relative;
+  z-index: 3;
+
+  @media screen {
+    -ms-overflow-style: none;  // IE 10+
+    overflow: -moz-scrollbars-none;  // Firefox
+    height: 100%;
+    overflow: auto;
+    position: absolute;
+    right: 2.5rem;
+    left: 3.0rem;
+    bottom: auto;
+  }
+
+  @media screen and (min-width: $break-point-dynamic) {
+    left: auto;
+    width: 15rem;
+  }
+  // >>>>>
+}
+.sidebar-sticky::-webkit-scrollbar {
+  display: none;  // Safari and Chrome
+}
+
+.sidebar-sticky > .sidebar-social > ul {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sidebar-about {
+  text-align: center;
+}
+.sidebar-about > h2 {
+  display: grid;
+}
+.sidebar-about > p {
+  font-size: 0.8em;
+}
+
+a.sidebar-nav-item {
+  width:100%;
+  font-weight: normal;
+  display: block;
+  line-height: 1.75;
+  padding: .25rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+a.sidebar-nav-subitem {
+  font-weight: normal;
+  display: block;
+  line-height: 1.75;
+  padding: .25rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.list-wrapper {
+  display: flex;
+}
+
+.list-body {
+  margin:4px;
+}
+
+.folder {
+  color:#eee;
+  width:30px;
+  height:30px;
+  position: absolute;
+  text-align: center;
+  cursor:pointer;
+  right:10px;
+}
+
+.folder:hover {
+  background: #000;
+  opacity: 0.1;
+}
+
+input[type="checkbox"]{
+  position: absolute;
+  left: -9999px;
+}
+
+input[type="checkbox"] ~ ul{
+  height: 0;
+  transform: scaleY(0);
+}
+
+input[type="checkbox"]:checked ~ ul{
+  list-style: none;
+  height: 100%;
+  transform-origin: top;
+  transition: transform .2s ease-out;
+  transform: scaleY(1);
+}

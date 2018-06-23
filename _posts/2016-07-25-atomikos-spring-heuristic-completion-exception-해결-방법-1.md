@@ -1,0 +1,39 @@
+---
+title: Atomikos + Spring Heuristic Completion Exception 해결 방법 (1)
+layout: post
+permalink: /archives/26
+categories: programming
+tags: spring
+comments: true
+---
+Spring에서 Atomikos를 이용하여 분산 트랜잭션을 처리할 때 HeuristicCompletionException: Heuristic completion: outcome state is mixed 에러가 발생하는 경우가 있다.
+
+필자의 경우 context.xml에 bean 정의가 아래와 같이 되어 있었는데,
+
+```
+<bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.J2eeTransactionManager" depends-on="userTransactionService" />
+
+<bean id="atomikosUserTransaction" class="com.atomikos.icatch.jta.J2eeUserTransaction" depends-on="userTransactionService" />
+```
+
+이를 아래와 같이
+
+```
+<bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager"
+    init-method="init" destroy-method="close" depends-on="userTransactionService">
+    <!-- IMPORTANT: disable startup because the userTransactionService above does this -->
+    <property name="startupTransactionService" value="false" />
+ 
+    <property name="forceShutdown" value="false" />
+</bean>
+
+<bean id="atomikosUserTransaction" class="com.atomikos.icatch.jta.UserTransactionImp" depends-on="userTransactionService">
+    <property name="transactionTimeout" value="300" /> <!-- Seconds -->
+</bean>
+```
+
+_J2eeTransaction_에서 _UserTransaction_으로 변경하니까 해결됐다.
+
+당연히 필자가 구성한 WAS가 EE 환경인 줄 알았는데, SE 환경이더라... 쩝..
+
+자세한 설정은 [여기](https://www.atomikos.com/Documentation/SpringIntegration)를 참고하면 되겠다.
