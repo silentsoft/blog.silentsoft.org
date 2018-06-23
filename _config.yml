@@ -184,7 +184,7 @@ exclude:
   - NOTICE.md
   - CHANGELOG.md
   - README.md
-  - hydejack.iml
+  - blog.silentsoft.org.iml
 
 
 # Plugins and Plugin Configuration
@@ -215,7 +215,7 @@ plugins:
 # ---------------------------------------------------------------------------------------
 
 # Where you proof that you own this site (used by jekyll-seo-tag)
-# google_site_verification: <verification-id>
+google_site_verification: L-7RmNNelAFzLK3MPycWRN0o7Q9DxceTOVJFOCD22kg
 # -- or --
 # webmaster_verifications:
 #   google:              <verification-id>
