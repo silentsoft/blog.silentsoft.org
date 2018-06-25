@@ -1,3 +1,46 @@
+// <<<<< INLINE
+.content {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5rem 1rem 12rem;
+
+  @media screen {
+    padding-left: 1.5rem;
+    max-width: 38rem;
+    min-height: 100vh;
+  }
+
+  @media screen and (min-width: $break-point-2) {
+    max-width: 42rem;
+  }
+
+  @media screen and (min-width: $break-point-3) {
+    margin-left: 22rem;
+    margin-right: 4rem;
+    padding-left: 1rem;
+  }
+
+  @media screen and (min-width: $break-point-4) {
+    float: left;
+    margin-left: 22rem;
+  }
+
+  @media screen and (min-width: $break-point-dynamic) {
+    float: left;
+    margin-left: calc(50% - 24rem);
+  }
+}
+// >>>>>
+// <<< link
+.content {
+  @media print {
+    padding-bottom: 1rem;
+  }
+}
+// >>>
+
+
 .sidebar-bg {
   background: #fff center / cover;
 }
@@ -132,4 +175,56 @@ input[type="checkbox"]:checked ~ ul{
   transform-origin: top;
   transition: transform .2s ease-out;
   transform: scaleY(1);
+}
+
+.right-side {
+  width:100%;
+  margin-left: auto;
+  margin-right: auto;
+
+  .ad-first{
+    text-align: center;
+  }
+
+
+  @media screen {
+    max-width: 38rem;
+    //min-height: 100vh;
+
+    .ad-second{
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: $break-point-2) {
+    .ad-second{
+      text-align: center;
+      display: block;
+    }
+  }
+
+  @media screen and (min-width: $break-point-3) {
+    margin-left: 22rem;
+    max-width: 42rem;
+  }
+
+  @media screen and (min-width: $break-point-4) {
+    float: left;
+    margin-left: 22rem;
+  }
+
+  @media screen and (min-width: 84em) {
+    width:160px;
+    margin-left: 0rem;
+    margin-right:0rem;
+    margin-top: 11rem;
+  }
+
+  @media screen and (min-width: 92em) {
+    width:300px;
+    margin-left: 0rem;
+    margin-right:0rem;
+    margin-top: 11rem;
+  }
+
 }

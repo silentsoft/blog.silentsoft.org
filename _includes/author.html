@@ -18,7 +18,9 @@
 
   {{ .author.about | markdownify }}
 
+  {% comment %}
   <div class="sidebar-social">
     {% include social.html author=author %}
   </div>
+  {% endcomment %}
 </div>
