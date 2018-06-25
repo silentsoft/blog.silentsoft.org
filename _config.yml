@@ -37,7 +37,7 @@ tagline:               >
 #keywords:              []
 
 # Used by jekyll-seo-tag...
-logo:                  /assets/img/og-img-1200x630.png
+logo:                  /assets/img/SILENTSOFT-1200x630.png
 
 timezone: Asia/Seoul
 
@@ -96,7 +96,7 @@ font_heading:          Lato, Arial, sans-serif
 
 # Set your Google Analytics id to receive `pageview` events.
 # To remove Google Anaylics from your page, remove the line below.
-# google_analytics:      UA-XXXXXXXX-X
+google_analytics:      UA-121310823-1
 
 # Setting a disqus shortname will enable the comment section on
 # pages with `comments: true` in the front matter.
@@ -142,7 +142,7 @@ hydejack:
 
   # You can set this to `true` if you don't want to set the `theme-color` meta tag,
   # This only affects the meta tag, not the color specified in the app manifest.
-  no_theme_color:      false
+  no_theme_color:      true
 
   # Set to `true` when building with the `--lsi` option
   use_lsi:             false
@@ -168,6 +168,26 @@ collections:
     permalink:         /projects/:path/
     output:            true
 
+
+# Defaults
+# ========================================================================================
+
+defaults:
+  -
+    scope:
+      path:            "_featured_categories"
+    values:
+      sitemap:         false
+  -
+    scope:
+      path:            "_featured_tags"
+    values:
+      sitemap:         false
+  -
+    scope:
+      path:            "page"
+    values:
+      sitemap:         false
 
 # File inclusion/exclusion
 # ========================================================================================
@@ -228,9 +248,9 @@ google_site_verification: L-7RmNNelAFzLK3MPycWRN0o7Q9DxceTOVJFOCD22kg
 #   username:            <shortname>
 
 # Used for Facebook open graph
-# facebook:
-#   app_id:              <id>
-#   publisher:           <id>
+facebook:
+  app_id:              193498451060730
+  publisher:           https://www.facebook.com/silentsoft
 #   admins:              <id>
 
 # Used on index and about sites
