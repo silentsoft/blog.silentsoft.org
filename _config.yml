@@ -73,7 +73,10 @@ paginate_path:         /page/:num/
 
 # Sidebar image and theme color of the site.
 #Photo by James Donovan on Unsplash (https://unsplash.com/photos/hF27It_F5xY)
-accent_image:          /assets/img/sidebar-bg.jpg
+#accent_image:          /assets/img/sidebar-bg.jpg
+accent_image:
+  background:          '#2f3640'
+  overlay:             false
 accent_color:          '#1085E2'
 #accent_color:          '#4fb1ba'
 #accent_color:          '#a85641'
