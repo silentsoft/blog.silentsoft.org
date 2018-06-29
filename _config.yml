@@ -208,6 +208,7 @@ exclude:
   - CHANGELOG.md
   - README.md
   - blog.silentsoft.org.iml
+  - posts.md
 
 
 # Plugins and Plugin Configuration
