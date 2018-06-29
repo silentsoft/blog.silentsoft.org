@@ -26,8 +26,8 @@ title:                 SILENTSOFT
 
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
-description:           >
-  세상을 이롭게 하고싶은 개발자 블로그
+#description:           >
+#  세상을 이롭게 하고싶은 개발자 블로그
 
 # A shorter description for the sidebar.
 tagline:               >
