@@ -56,9 +56,9 @@ error:
 # ---------------------------------------------------------------------------------------
 colon:                 ':'
 separator:             '|'
-category_start:        'in '
+category_start:        ' '
 category_spearator:    ' / '
-tag_start:             'on '
+tag_start:             ' '
 tag_separator:         ', '
 
 

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?api3md');
-  src:  url('fonts/icomoon.eot?api3md#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?api3md') format('truetype'),
-    url('fonts/icomoon.woff?api3md') format('woff'),
-    url('fonts/icomoon.svg?api3md#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?v11fqn');
+  src:  url('fonts/icomoon.eot?v11fqn#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?v11fqn') format('truetype'),
+    url('fonts/icomoon.woff?v11fqn') format('woff'),
+    url('fonts/icomoon.svg?v11fqn#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -39,7 +39,7 @@
 .icon-location:before {
   content: "\e947";
 }
-.icon-bubbles:before {
+.icon-bubbles2:before {
   content: "\e96c";
 }
 .icon-quotes-right:before {
@@ -266,4 +266,31 @@
 }
 .icon-mail2:before {
   content: "\ea84";
+}
+.icon-quill:before {
+  content: "\e907";
+}
+.icon-folder:before {
+  content: "\e92f";
+}
+.icon-folder-open:before {
+  content: "\e930";
+}
+.icon-price-tag:before {
+  content: "\e935";
+}
+.icon-price-tags:before {
+  content: "\e936";
+}
+.icon-calendar:before {
+  content: "\e953";
+}
+.icon-bubble:before {
+  content: "\e96b";
+}
+.icon-bubbles:before {
+  content: "\e96d";
+}
+.icon-user:before {
+  content: "\e971";
 }
