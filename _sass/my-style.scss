@@ -45,6 +45,56 @@ h1, .h1 {
 // >>>
 
 
+hy-drawer {
+  position: relative; // inline
+  padding: 1rem 0; // inline
+
+  @media screen {
+    padding: 2rem 1rem; // inline
+    min-height: 640px; // link
+    min-height: 100vh; // link
+
+    // <<< link
+    > .hy-drawer-content.hy-drawer-left {
+      width: calc(18rem + 1px);
+      left: -17.5rem;
+      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
+    }
+
+    --hy-drawer-width: calc(18rem + 1px);
+    --hy-drawer-slide-width: 17.5rem;
+    --hy-drawer-box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
+
+    &.loaded {
+      min-height: 0;
+      padding: 0;
+    }
+    // >>>
+  }
+
+  @media screen and (min-width: $break-point-3) {
+    // <<< inline
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 18rem;
+    margin-left: 0;
+    // >>>
+
+    > .hy-drawer-content.hy-drawer-left { box-shadow: none; } // link
+    --hy-drawer-box-shadow: none; // link
+  }
+
+  @media screen and (min-width: $break-point-dynamic) {
+    width: calc(50% - 28rem); // inline
+    > .hy-drawer-content.hy-drawer-left  { width: calc(50% - 28rem); left: calc(-50% + 28.5rem); } // link
+    --hy-drawer-width: calc(50% - 28rem); // link
+    --hy-drawer-slide-width: calc(50% - 28.5rem); // link
+  }
+}
+
+
 .sidebar-bg {
   background: #fff center / cover;
 }
@@ -93,7 +143,7 @@ h1, .h1 {
     position: absolute;
     right: 2.5rem;
     left: 3.0rem;
-    bottom: auto;
+    bottom: 0;
     padding-bottom: 5.0rem;
   }
 
