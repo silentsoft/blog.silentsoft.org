@@ -126,8 +126,7 @@ hydejack:
   no_mark_external:    false
 
   # Set to `true` if third party plugins fail to work with dynamically loaded pages
-  # This must be 'true' when using the AddThis script. Otherwise, the script will not be loaded when the page changes.
-  no_push_state:       true
+  no_push_state:       false
 
   # Set to `true` if you want to disable the drawer
   no_drawer:           false
