@@ -180,16 +180,23 @@ defaults:
     scope:
       path:            "_featured_categories"
     values:
+      layout:          list
+      menu:            true
+      robots:          noindex
       sitemap:         false
   -
     scope:
       path:            "_featured_tags"
     values:
+      layout:          tag-blog
+      menu:            false
+      robots:          noindex
       sitemap:         false
   -
     scope:
       path:            "page"
     values:
+      robots:          noindex
       sitemap:         false
 
 # File inclusion/exclusion

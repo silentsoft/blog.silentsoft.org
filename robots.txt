@@ -1,8 +1,4 @@
 User-agent: *
-Disallow: /tag/
-Disallow: /category/
-Disallow: /page/
-Disallow: /posts/
 Allow: /about/
 Allow: /archives/
 Sitemap: https://blog.silentsoft.org/sitemap.xml

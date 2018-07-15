@@ -1,3 +1,7 @@
+{% if page.robots %}
+<meta name="robots" content="{{ page.robots }}">
+{% endif %}
+
 {% comment %}
 <!--
 Using `preload` so that page rendering doesn't get blocked.
