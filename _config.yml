@@ -45,7 +45,7 @@ timezone: Asia/Seoul
 # Duplication is necessary due to the `jekyll-feed`, `jekyll-seo-tag` plugin.
 author:
   name:                Hyesung Lee
-  email:               hs830.lee
+  email:               contact@silentsoft.org
   # Used by `jekyll-seo-tag`:
   # twitter:             <username>
 

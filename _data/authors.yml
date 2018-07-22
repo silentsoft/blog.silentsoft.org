@@ -3,7 +3,7 @@
 # Change `author1` to your shortname.
 author0:
   name:              Hyesung Lee
-  email:             hs830.lee@gmail.com
+  email:             contact@silentsoft.org
   about:             |
                      세상을 이롭게 하고싶은 개발자.
                      코딩을 좋아하고 가끔씩 글을 씀.
@@ -13,7 +13,7 @@ author0:
   social:
     facebook:        silentsoft
     github:          silentsoft
-    email:           mailto:hs830.lee@gmail.com
+    email:           mailto:contact@silentsoft.org
     rss:             /feed.xml
 
 
