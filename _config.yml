@@ -103,7 +103,7 @@ google_analytics:      UA-121310823-1
 
 # Setting a disqus shortname will enable the comment section on
 # pages with `comments: true` in the front matter.
-disqus:                silentsoft-blog
+#disqus:                silentsoft-blog
 
 # Setting a tinyletter username will enable the newsletter subscription box.
 # tinyletter:            <tinyletter_username>
