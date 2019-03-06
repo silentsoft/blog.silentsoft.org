@@ -2,5 +2,5 @@
 title: Architecture
 slug: architecture
 submenu: true
-order: 7
+order: 8
 ---
