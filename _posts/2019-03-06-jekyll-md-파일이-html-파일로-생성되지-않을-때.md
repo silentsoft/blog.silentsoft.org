@@ -1,0 +1,15 @@
+---
+title: '[Jekyll] .md 파일이 .html 파일로 생성되지 않을 때'
+layout: post
+permalink: /archives/189
+categories: jekyll
+comments: true
+---
+
+encoding을 UTF-8로 사용한다면, .md 파일에 BOM이 없어야 한다. 윈도우에서는 BOM이 자동 삽입되어 저장되는 경우가 많은데, 이러면 Jekyll이 문제를 일으킨다.
+
+IntelliJ IDE를 사용한다면 `_posts` 또는 .md 파일이 있는 폴더를 우클릭하여 `Remove BOM` 메뉴로 쉽게 해결할 수 있다.
+
+IntelliJ IDE를 사용하지 않는다면 .md 파일을 저장할 때 UTF-8 without BOM 옵션이 있는지 잘 살펴보자.
+
+- 참고 : [https://jekyllrb.com/docs/installation/windows/#encoding]()
