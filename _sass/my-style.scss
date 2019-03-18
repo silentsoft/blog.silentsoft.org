@@ -214,8 +214,7 @@ a.sidebar-nav-subitem {
 }
 
 input[type="checkbox"]{
-  position: absolute;
-  left: -9999px;
+  display: none;
 }
 
 input[type="checkbox"] ~ ul{
