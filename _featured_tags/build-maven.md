@@ -2,5 +2,5 @@
 title: Maven
 slug: maven
 category: build
-order: 1
+order: 100
 ---

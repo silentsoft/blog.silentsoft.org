@@ -2,5 +2,5 @@
 title: Server
 slug: server
 submenu: true
-order: 7
+order: 700
 ---

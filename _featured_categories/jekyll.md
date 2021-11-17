@@ -2,5 +2,5 @@
 title: Jekyll
 slug: jekyll
 submenu: false
-order: 6
+order: 600
 ---
