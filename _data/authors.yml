@@ -11,7 +11,8 @@ author0:
   picture:
     path:            /assets/img/me.jpg
   social:
-    facebook:        silentsoft
+    #facebook:        silentsoft
+    twitter:         silentsoft_
     github:          silentsoft
     email:           mailto:contact@silentsoft.org
     rss:             /feed.xml
