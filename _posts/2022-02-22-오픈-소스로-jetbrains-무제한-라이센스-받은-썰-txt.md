@@ -1,0 +1,86 @@
+---
+title: 오픈 소스로 JetBrains 무제한 라이센스 받은 썰.txt
+layout: post
+permalink: /archives/195
+categories: open-source
+comments: true
+---
+
+<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" alt="JetBrains Logo (Main) logo." width="240"/>
+
+JetBrains. 이제는 모르는 사람이 없을 정도로 (비싼만큼 돈 값한다는) IntelliJ 개발사로 유명한 회사죠.
+
+이들 제품의 개인용 단일 라이센스 가격은 $149 달러, JetBrains의 모든 제품이 포함된 All Product Pack은 $249 달러이고,
+기업용은 1명 기준 단일 제품 라이센스 가격이 무려 $499 달러, All Product Pack은 $649 달러입니다.
+
+물론 무제한 라이센스가 아닌 1년 기준 가격입니다.
+
+JetBrains는 무제한 라이센스가 없습니다. 모두 년단위 갱신이죠.
+
+네?
+
+네.
+
+미안하다 이거 보여주려고 어그로 끌었다.. 나루토 사스케 싸움수준 ㄹㅇ 실화냐?
+
+![](../assets/archives/195/narutosasukessaumsujun.jpg)
+
+아.. 농담이구요. 크흠.
+
+JetBrains는 오픈 소스 개발자들을 위해 [Open Source Support Program](https://www.jetbrains.com/community/opensource/)을 운영합니다.
+아래의 몇 가지 조건만 맞다면 라이센스를 **1년 무료로** 획득하실 수 있습니다. 1년 후에도 여전히 아래 조건들을 만족한다면 라이센스를 연장할 수 있습니다. 사실상 무제한인 셈이죠.
+
+- [오픈 소스](https://opensource.org/docs/osd)일 것.
+- 활발한 개발이 진행 중일 것. (적어도 3개월동안 정기적인 커밋이 있어야)
+    - 코드 수정이 있는 커밋 O
+    - README.md 업데이트 같은 단순 문서 커밋 X
+- 유료 제품이 아니어야 함.
+- 기업 및 조직으로부터 후원받지 않아야 함.
+- 프로젝트 팀원에게 댓가를 지불하지 않아야 함. (고용 개발자 X)
+
+[신청 페이지](https://www.jetbrains.com/community/opensource/)에서 Apply 버튼을 눌러 몇 가지 폼을 채우고 제출하면 1~2주안에 요청 수락/반려 여부를 메일로 알려줍니다.
+
+저는 이번에 제가 개발한 [Hits](https://github.com/silentsoft/hits) 프로젝트로 신청했습니다.
+
+![](../assets/archives/195/repository.png)
+
+신청하고나서 까먹을 즈음하니 늦은 저녁에 메일이 오더군요.
+
+```
+Dear Hyesung,
+
+Congratulations, your request to JetBrains for Open Source development license(s) has been approved! The license certificate is attached to this message.
+
+Main facts about your license(s):
+ - They are valid for one year. You will receive an automatic email reminder shortly before the license expiration date.
+ - They should be used for developing your non-commercial open source projects only.
+ - If you’ve received more than one license, please share them only with active contributors to your project.
+
+...
+```
+
+이제 이로써 지난번에 [Actlist](https://github.com/actlist/actlist) 프로젝트로 신청했었던 것 포함해서 두 번째 라이센스 획득이네요 !
+
+![](../assets/archives/195/certificate.png)
+
+제가 이미 라이센스가 있음에도 불구하고 또 다른 오픈 소스 프로젝트로 신청한 이유는 ...
+
+```
+Dear Hyesung,
+
+...
+
+If you find that JetBrains software has been useful for your project, please consider mentioning JetBrains support on your project’s homepage. Feel free to use the JetBrains logo and a link to our website such as https://jb.gg/OpenSourceSupport.
+
+If you have any questions, please get in touch with us at opensource@jetbrains.com. We’ll be glad to help.
+
+Kind regards, 
+```
+
+깃허브 [README.md](https://github.com/silentsoft/hits#thanks-to)에 JetBrains 로고를 넣고 싶었거든요 :)
+
+![](../assets/archives/195/readme.png)
+
+~~로고가 참 아름답네요.~~
+
+엄청 유명한 오픈 소스 프로젝트여야 한다거나, 깃허브 스타 갯수가 100개 이상이어야 한다거나 하는 등의 기준은 없으니, 부담갖지 마시고 여러분들도 한 번 신청해보세요 :)
