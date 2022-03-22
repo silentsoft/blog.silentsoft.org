@@ -58,9 +58,9 @@ START "WINDOWS TITLE" CMD /C bin\httpd.exe
 
 위 스크립트에서 수정해야 할 곳은 아래와 같이 2곳이다.
 
-SET SERVERADMIN=email@localhost <- 이 부분에 본인 이메일을 작성하고,
+`SET SERVERADMIN=email@localhost` 이 부분에 본인 이메일을 작성하고,
   
-START "WINDOWS TITLE" CMD /C bin\httpd.exe <- 이 부분에 윈도우 타이틀에 표시할 이름을 바꿔준다.
+`START "WINDOWS TITLE" CMD /C bin\httpd.exe` 이 부분에 윈도우 타이틀에 표시할 이름을 바꿔준다.
 
 이 스크립트를 Apache 최상위 폴더에 "startup.bat"로 저장하고 실행하면 된다.
 

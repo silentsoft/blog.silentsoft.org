@@ -6,7 +6,7 @@ categories: build
 tags: maven
 comments: true
 ---
-필자가 이클립스 Luna에서 Neon으로 넘어오면서 갑자기 빌드가 안된다거나(<https://blog.silentsoft.org/archives/19>), 이번 포스팅의 주제인 PKIX 에러가 난다거나 하는 등의 난감한 상황들을 겪었다. 그럴 때마다, 또 앞으로 벌어지는 난감한 상황들에 대해 포스팅을 쓸 테지만, 누군가에게 꼭 도움이 되었으면 좋겠다.
+필자가 이클립스 Luna에서 Neon으로 넘어오면서 갑자기 [빌드가 안된다거나](https://blog.silentsoft.org/archives/19), 이번 포스팅의 주제인 PKIX 에러가 난다거나 하는 등의 난감한 상황들을 겪었다. 그럴 때마다, 또 앞으로 벌어지는 난감한 상황들에 대해 포스팅을 쓸 테지만, 누군가에게 꼭 도움이 되었으면 좋겠다.
 
 Maven 빌드 할 때 아래와 같이 PKIX 에러가 나는 경우가 있다.
 

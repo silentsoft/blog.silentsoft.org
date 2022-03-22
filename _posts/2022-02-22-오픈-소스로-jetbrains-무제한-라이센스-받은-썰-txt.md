@@ -10,8 +10,8 @@ comments: true
 
 JetBrains. 이제는 모르는 사람이 없을 정도로 (비싼만큼 돈 값한다는) IntelliJ 개발사로 유명한 회사죠.
 
-이들 제품의 개인용 단일 라이센스 가격은 $149 달러, JetBrains의 모든 제품이 포함된 All Product Pack은 $249 달러이고,
-기업용은 1명 기준 단일 제품 라이센스 가격이 무려 $499 달러, All Product Pack은 $649 달러입니다.
+이들 제품의 개인용 단일 라이센스 가격은 149 달러, JetBrains의 모든 제품이 포함된 All Product Pack은 249 달러이고,
+기업용은 1명 기준 단일 제품 라이센스 가격이 무려 499 달러, All Product Pack은 649 달러입니다.
 
 물론 무제한 라이센스가 아닌 1년 기준 가격입니다.
 

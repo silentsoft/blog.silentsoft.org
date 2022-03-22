@@ -17,7 +17,7 @@ comments: true
 </Server>
 ```
 
-그리고 {apache}/conf/httpd.conf 파일에서 아래와 같이 httpd-vhosts.conf를 사용하도록 주석을 해제하자.
+그리고 `{apache}/conf/httpd.conf` 파일에서 아래와 같이 `httpd-vhosts.conf`를 사용하도록 주석을 해제하자.
 
 ```
 # Virtual hosts
@@ -26,7 +26,7 @@ Include conf/extra/httpd-vhosts.conf
 
 http://silentsoft.kr에 대한 요청은 Apache가 처리하도록 하고, http://silentsoft.org에 대한 요청은 ProxyPass 설정을 통해 Tomcat에게 넘겨주도록 설정해보자.
 
-{apache}/conf/extra/httpd-vhosts.conf 파일에 아래와 같이 Virtual Host를 설정하자.
+`{apache}/conf/extra/httpd-vhosts.conf` 파일에 아래와 같이 Virtual Host를 설정하자.
 
 ```
 <VirtualHost *:80>
@@ -65,6 +65,6 @@ http://silentsoft.kr에 대한 요청은 Apache가 처리하도록 하고, http:
 
 위 설정을 자세히 보면 silentsoft.kr에 대한 요청은 DocumentRoot를 지정하여 Apache가 처리하도록 잡아두고, silentsoft.org에 대한 요청은 DocumentRoot를 지정하지 않고 ProxyPass를 통해 Tomcat 81 포트로 넘겨주는 것을 알 수 있다.
 
-2편에서 작성했던 {apache}/startup.bat 파일을 실행하여 Apache를 기동하자.
+2편에서 작성했던 `{apache}/startup.bat` 파일을 실행하여 Apache를 기동하자.
 
 이로써 모든 설치와 설정이 끝났다. Tomcat으로 기존 웹 서비스는 그대로 제공하면서 WordPress를 설치하는 방법에 대한 포스팅을 마무리하겠다.

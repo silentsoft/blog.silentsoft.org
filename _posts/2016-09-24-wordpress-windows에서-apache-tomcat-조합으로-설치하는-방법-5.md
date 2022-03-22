@@ -5,7 +5,7 @@ permalink: /archives/160
 categories: wordpress
 comments: true
 ---
-다운로드한 wordpress zip 파일을 {tomcat}/webapps/silentsoft.kr/ROOT/ 디렉터리에 풀리도록 하자. 만약, Tomcat이 아닌 Apache를 사용하는 경우, {apache}/htdocs/ 디렉터리에 풀리도록 하자. (주의 : 압축 해제할 때 /ROOT/ 디렉터리 또는 /htdocs/ 디렉터리 밑에 index.php 파일이 존재하도록 해야 한다.)
+다운로드한 wordpress zip 파일을 `{tomcat}/webapps/silentsoft.kr/ROOT/` 디렉터리에 풀리도록 하자. 만약, Tomcat이 아닌 Apache를 사용하는 경우, `{apache}/htdocs/` 디렉터리에 풀리도록 하자. (주의 : 압축 해제할 때 /ROOT/ 디렉터리 또는 /htdocs/ 디렉터리 밑에 index.php 파일이 존재하도록 해야 한다.)
 
 /wp-config-sample.php 파일을 열어서 DB\_NAME, DB\_USER, DB_PASSWORD를 설정한대로 수정하자.
 
