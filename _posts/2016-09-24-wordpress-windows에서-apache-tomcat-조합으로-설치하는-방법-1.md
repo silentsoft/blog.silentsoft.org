@@ -5,7 +5,7 @@ permalink: /archives/141
 categories: wordpress
 comments: true
 ---
-이 글은 WordPress를 가입형이 아닌 설치형으로 구성하는 방법에 대하여 설명하는 글이다. 서버를 상시 구동할 수 있고, 도메인을 소유하고 있는 사람이라면 이 글을 통하여 WordPress를 구성할 수 있다. 만약 기존에 Tomcat으로 서비스 중인 웹 사이트 또는 웹 서버가 있다면, 이는 그대로 유지하면서 WordPress를 설치하는 방법에 대하여 설명하겠다.
+이 글은 WordPress를 가입형이 아닌 설치형으로 구성하는 방법에 대하여 설명하는 글이다. 서버를 상시 구동할 수 있고, 도메인을 소유하고 있는 사람이라면 이 글을 통하여 WordPress를 구성할 수 있다. 만약 기존에 Tomcat으로 서비스 중인 웹 사이트 또는 웹 서버가 있다면, 이는 그대로 유지하면서 WordPress를 설치하는 방법에 대하여 설명하겠다.
 
 이 블로그 역시 Windows + Apache + PHP + WordPress + MariaDB로 구성되어 있다.
 

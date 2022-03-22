@@ -37,7 +37,7 @@ extension=php_mysqli.dll
 extension=php_pdo_mysql.dll
 ```
 
-아래 4개 extension은 기본적으로 WordPress 테마를 다운받는다거나, 사진/파일 처리에 꼭 필요하다. 마찬가지로 주석 해제하자. (굳이 당장 지금 주석 해제할 필요는 없다. 하지만 나중에 WordPress 기능이 안되서 구글링하다보면 결국 이 옵션에 수렴할 것이다.)
+아래 4개 extension은 기본적으로 WordPress 테마를 다운받는다거나, 사진/파일 처리에 꼭 필요하다. 마찬가지로 주석 해제하자. (굳이 당장 지금 주석 해제할 필요는 없다. 하지만 나중에 WordPress 기능이 안되서 구글링하다보면 결국 이 옵션에 수렴할 것이다.)
 
 ```
 extension=php_curl.dll

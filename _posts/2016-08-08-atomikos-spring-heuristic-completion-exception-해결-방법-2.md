@@ -6,7 +6,7 @@ categories: programming
 tags: spring
 comments: true
 ---
-Atomikos와 Spring을 이용한 분산 트랜잭션 처리 중 HeuristicCompletionException 예외 발생 시 [이전 포스팅](https://blog.silentsoft.org/archives/26)의 방법으로 해결이 안되는 경우, 혹시 n개의 DB 중에 PostgreSQL을 사용한다면 DB 설정 값을 바꾸면 해결된다.
+Atomikos와 Spring을 이용한 분산 트랜잭션 처리 중 HeuristicCompletionException 예외 발생 시 [이전 포스팅](https://blog.silentsoft.org/archives/26)의 방법으로 해결이 안되는 경우, 혹시 n개의 DB 중에 PostgreSQL을 사용한다면 DB 설정 값을 바꾸면 해결된다.
 
 > **DB 설정 파일 경로**
 >
@@ -16,7 +16,7 @@ Atomikos와 Spring을 이용한 분산 트랜잭션 처리 중 HeuristicCompleti
 >
 > max_prepared_transactions = 10
 
-max_prepared_transactions 초기 값은 주석 처리되어 있으며, 0이다. 주석(#)을 해제하고, 적당한 값으로 변경한 뒤, DB를 재기동하면 된다.
+max_prepared_transactions 초기 값은 주석 처리되어 있으며, 0이다. 주석(#)을 해제하고, 적당한 값으로 변경한 뒤, DB를 재기동하면 된다.
 
 > **PostgreSQL DB 재기동 방법**
 >

@@ -15,7 +15,7 @@ Apache 2.2 버전에서는 .msi 설치 파일을 제공하는데, 이 파일을 
 
 아래 Link를 통해 .msi 설치 파일을 다운로드 하자.
   
-[Archives](https://archive.apache.org/dist/httpd/binaries/win32/) | [Direct Link](https://archive.apache.org/dist/httpd/binaries/win32/httpd-2.2.25-win32-x86-openssl-0.9.8y.msi)
+[Archives](https://archive.apache.org/dist/httpd/binaries/win32/) | [Direct Link](https://archive.apache.org/dist/httpd/binaries/win32/httpd-2.2.25-win32-x86-openssl-0.9.8y.msi)
 
 .msi 파일에서 설치될 파일들을 추출하는 UniExtract를 다운로드 하자.
   
@@ -81,7 +81,7 @@ LoadModule rewrite_module modules/mod_rewrite.so
 
 mod_proxy* 관련 모듈은 6편에서 Tomcat에 proxy-pass하기 위해 사용할 모듈이고, mod_rewirte 모듈은 WordPress에서 사용할 모듈이다.
 
-6편을 참조하지 않을 독자 혹은 WordPress를 사용하다가 에러나서 신나게 구글링을 하고 싶은 독자들은 굳이 주석을 해제하지 않아도 되겠다. (필자가 사기치려는게 아니라 다 독자들의 정신 건강을 지켜주기 위함임을 알아줬으면 좋겠다.)
+6편을 참조하지 않을 독자 혹은 WordPress를 사용하다가 에러나서 신나게 구글링을 하고 싶은 독자들은 굳이 주석을 해제하지 않아도 되겠다. (필자가 사기치려는게 아니라 다 독자들의 정신 건강을 지켜주기 위함임을 알아줬으면 좋겠다.)
 
 3편에서는 PHP를 설치하는 방법에 대하여 다루겠다.
 

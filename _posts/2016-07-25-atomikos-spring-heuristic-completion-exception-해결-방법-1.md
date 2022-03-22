@@ -6,7 +6,7 @@ categories: programming
 tags: spring
 comments: true
 ---
-Spring에서 Atomikos를 이용하여 분산 트랜잭션을 처리할 때 HeuristicCompletionException: Heuristic completion: outcome state is mixed 에러가 발생하는 경우가 있다.
+Spring에서 Atomikos를 이용하여 분산 트랜잭션을 처리할 때 HeuristicCompletionException: Heuristic completion: outcome state is mixed 에러가 발생하는 경우가 있다.
 
 필자의 경우 context.xml에 bean 정의가 아래와 같이 되어 있었는데,
 
@@ -36,4 +36,4 @@ _J2eeTransaction_에서 _UserTransaction_으로 변경하니까 해결됐다.
 
 당연히 필자가 구성한 WAS가 EE 환경인 줄 알았는데, SE 환경이더라... 쩝..
 
-자세한 설정은 [여기](https://www.atomikos.com/Documentation/SpringIntegration)를 참고하면 되겠다.
+자세한 설정은 [여기](https://www.atomikos.com/Documentation/SpringIntegration)를 참고하면 되겠다.

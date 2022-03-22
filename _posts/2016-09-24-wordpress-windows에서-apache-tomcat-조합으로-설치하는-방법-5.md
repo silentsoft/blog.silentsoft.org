@@ -28,9 +28,9 @@ define('LOGGED_IN_SALT',   'put your unique phrase here');
 define('NONCE_SALT',       'put your unique phrase here');
 ```
 
-https://api.wordpress.org/secret-key/1.1/salt/ 이곳에 접속하여 나오는 값을 그대로 복사해서 기본 정의된 값을 바꾸자.
+https://api.wordpress.org/secret-key/1.1/salt/ 이곳에 접속하여 나오는 값을 그대로 복사해서 기본 정의된 값을 바꾸자.
 
-인증키 아래에는 데이터베이스에 WordPress 테이블을 만들 때 테이블명에 prefix를 정의하는 설정이 있다.
+인증키 아래에는 데이터베이스에 WordPress 테이블을 만들 때 테이블명에 prefix를 정의하는 설정이 있다.
 
 ```
 $table_prefix  = 'wp_';

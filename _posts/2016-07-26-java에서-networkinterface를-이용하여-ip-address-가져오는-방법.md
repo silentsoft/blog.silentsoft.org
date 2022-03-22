@@ -12,7 +12,7 @@ comments: true
 Inet4Address.getLocalHost().getHostAddress()
 ```
 
-위 코드는 IPv4 Address가 하나일 때 잘 동작하지만, 위에서 언급 한대로 IPv4 Address가 여러 개인 경우 비활성화된 IPv4 Address를 리턴하기도 한다.
+위 코드는 IPv4 Address가 하나일 때 잘 동작하지만, 위에서 언급 한대로 IPv4 Address가 여러 개인 경우 비활성화된 IPv4 Address를 리턴하기도 한다.
 
 이럴 때에는 NetworkInterface를 이용하여 아래와 같이 가져오면 된다.
 

@@ -17,7 +17,7 @@ comments: true
 </Server>
 ```
 
-그리고 {apache}/conf/httpd.conf 파일에서 아래와 같이 httpd-vhosts.conf를 사용하도록 주석을 해제하자.
+그리고 {apache}/conf/httpd.conf 파일에서 아래와 같이 httpd-vhosts.conf를 사용하도록 주석을 해제하자.
 
 ```
 # Virtual hosts

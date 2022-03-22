@@ -31,4 +31,4 @@ stage.setX(owner.getX() + (owner.getWidth() / 2) - (root.prefWidth(0) / 2));
 stage.setY(owner.getY() + (owner.getHeight() / 2) - (root.prefHeight(0) / 2));
 ```
 
-또 한가지 특이한 점은 첫 번째 코드에서 Scene을 생성한 후에 scene.getWidth() 메서드와 scene.getHeight() 메서드를 통해 사이즈를 가져왔지만, 디버깅해보면 0이다. 생성한 Scene에서 사이즈를 가져오지 말고, 두 번째 코드처럼 root(Parent)에서 가져와야 한다.
+또 한가지 특이한 점은 첫 번째 코드에서 Scene을 생성한 후에 scene.getWidth() 메서드와 scene.getHeight() 메서드를 통해 사이즈를 가져왔지만, 디버깅해보면 0이다. 생성한 Scene에서 사이즈를 가져오지 말고, 두 번째 코드처럼 root(Parent)에서 가져와야 한다.
