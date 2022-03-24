@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /about
+Allow: /archives
+Sitemap: https://blog.silentsoft.org/sitemap.xml

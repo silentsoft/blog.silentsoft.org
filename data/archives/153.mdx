@@ -1,0 +1,59 @@
+---
+title: '[WordPress] Windows에서 Apache + Tomcat 조합으로 설치하는 방법 (3/6)'
+date: '2016-09-24'
+lastmod: '2016-09-24'
+tags: ['wordpress']
+---
+
+PHP는 5.4.44 버전 이후 5.5부터는 Apache 2.2와 호환되지 않는다. 만약, 필자처럼 설치형 Apache가 아닌 전편에 따라 Apache 2.2를 구성한 경우 PHP는 꼭 php-5.4.44-Win32-VC9-x86 파일을 다운로드 하자. (마찬가지로 x64는 없다.)
+
+Apache 2.4를 구성한 경우에는 최신 버전의 PHP를 다운로드 해도 되겠다. 하지만, 필자가 미리 삽질해본 결과 Apache 2.4에서는 무슨 짓을 해도 최신 버전(5.4.44 이후)의 PHP 모듈을 잘 로드하지 못했다. 본인의 정신 건강을 지키고 싶다면, 그냥 필자가 안내하는대로 진행하면 되겠다. (모험을 좋아하고, 최신 버전을 반드시 사용해야 할 이유가 있다면 굳이 안내하는대로 안해도 되지만, 정신 건강은 보장하지 못한다.)
+
+[Archives](http://windows.php.net/downloads/releases/archives/) | [Direct Link](http://windows.php.net/downloads/releases/archives/php-5.4.44-Win32-VC9-x86.zip)
+
+다운받은 php 압축 파일을 해제하면 php5ts.dll 파일과 libssh2.dll 파일이 있는데, 이 파일들을 Apache 폴더의 bin 폴더로 복사하자. (지금 당장 필요한건 php5ts.dll 파일이지만, 나중에 어차피 WordPress때문에 libssh2.dll 파일을 복사해 와야한다. 그냥 지금 한꺼번에 하자.)
+
+![](/static/archives/153/apache-bin.png)
+
+php 폴더 안에는 php.ini-development 파일이 있다. 이 파일을 php.ini로 이름을 변경하자.
+
+![](/static/archives/153/php-root.png)
+
+이제부터 아래 설정들은 php.ini에 대한 설정이다. Ctrl+F로 찾아서 잘 바꾸면 되겠다.
+
+절대 경로로 php 폴더안에 ext 폴더를 지정하자. \가 아닌 /임을 주의하자.
+
+```
+extension_dir = "H:/Web Server/php/ext"
+```
+
+기본 extension 설정들은 모두 주석 처리 되어있다.
+
+MySQL 또는 MariaDB를 사용할 것이므로 아래 3개 extension에 대해 주석 해제하자.
+
+```
+extension=php_mysql.dll
+extension=php_mysqli.dll
+extension=php_pdo_mysql.dll
+```
+
+아래 4개 extension은 기본적으로 WordPress 테마를 다운받는다거나, 사진/파일 처리에 꼭 필요하다. 마찬가지로 주석 해제하자. (굳이 당장 지금 주석 해제할 필요는 없다. 하지만 나중에 WordPress 기능이 안되서 구글링하다보면 결국 이 옵션에 수렴할 것이다.)
+
+```
+extension=php_curl.dll
+extension=php_fileinfo.dll
+extension=php_gd2.dll
+extension=php_openssl.dll
+```
+
+이제 다시 Apache의 conf/httpd.conf로 돌아가서 파일의 가장 끝에 아래 설정들을 추가하자.
+
+```
+LoadModule php5_module "H:/Web Server/php/php5apache2_2.dll"
+AddType application/x-httpd-php .php
+PHPIniDir "H:/Web Server/php"
+```
+
+참, 절대 경로는 알아서 잘 수정하길 바란다.
+
+4편에서는 MariaDB를 설치하는 방법에 대하여 다루겠다.

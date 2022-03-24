@@ -1,0 +1,206 @@
+---
+title: 'Java로 클래스 간 이벤트 통신하기'
+date: '2015-11-30'
+lastmod: '2015-11-30'
+tags: ['programming', 'java']
+---
+
+다른 클래스의 어떤 메소드를 수행하기 위해서 직접 참조를 하게 될 경우 확장성도 떨어지고, 해당 메소드의 파라메터가 변경될 경우, 참조하는 모든 클래스의 호출자를 바꿔주어야 한다. 그래서 클래스 간 직접 참조 없이 이벤트 통신을 한다는 것은 꽤나 큰 의미가 있는 일이다.
+
+이벤트 통신의 근간은 이렇다.
+
+이벤트를 받을 클래스에서 Listener 인터페이스를 구현한 뒤, 이벤트를 받겠다고 Handler로 등록을 하면, 다른 클래스에서 Handler를 통해 등록된 Listener 들을 호출하는 방식이다. 이때, 호출하는 방법은 동기 방식이냐, 비동기 방식이냐에 따라 2가지로 분류될 수 있다.
+
+동기 방식으로 이벤트를 호출하게 될 경우, 먼저 등록된 Listener의 이벤트를 처리한 후, 그다음에 등록된 Listener의 이벤트를 처리하게 된다.
+
+반면 비동기 방식으로 이벤트를 호출하게 될 경우, 먼저 등록된 Listener의 이벤트가 끝나든 말든 상관하지 않고, 계속해서 다음 Listener의 이벤트를 호출하게 된다.
+
+다음은 각 방식의 이벤트 호출 사용 예이다.
+
+| 동기(Synchronous)                                                       | 비동기(Asynchronous)                                                                 |
+| :---------------------------------------------------------------------- | :----------------------------------------------------------------------------------- |
+| 이벤트 호출 후 다음 라인의 코드가 반드시 후처리로 진행되어야 하는 경우. | 이벤트 호출 후 다음 라인의 코드가 이벤트와 상관없이 진행되어도 되는 비즈니스인 경우. |
+
+두 가지 방법 모두 상황에 따라서 쓰되, 특별한 이유(선처리-후처리 비즈니스)가 없는 한 비동기 방식을 권장한다. 왜냐하면 동기 방식은 먼저 등록된 Listener의 이벤트 수행이 끝난 뒤 다음 Listener의 이벤트를 처리하기 때문에, 비동기 방식에 비해 수행 속도가 느려지게 된다.
+
+다음은 Event Listener와 Event Handler의 소스 코드이다.
+
+```java:EventListener.java
+package org.silentsoft.io.event;
+
+public interface EventListener {
+	public void onEvent(String event);
+}
+```
+
+```java:EventHandler.java
+package org.silentsoft.io.event;
+
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import org.silentsoft.io.event.EventListener;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public final class EventHandler {
+
+	private static final int MAX_THREAD_POOL = 5;
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(EventHandler.class);
+
+	/**
+	 * Note : ArrayList may occur ConcurrentModificationException so using
+	 * CopyOnWriteArrayList for prevent Exception based on multi thread. Do not
+	 * use below source code. private static List<EventListener> listeners = new
+	 * ArrayList<EventListener>();
+	 */
+	private static List<EventListener> listeners = new CopyOnWriteArrayList<EventListener>();
+
+	private static synchronized List<EventListener> getListeners() {
+		return listeners;
+	}
+
+	public static synchronized void addListener(EventListener eventListener) {
+		if (getListeners().indexOf(eventListener) == -1) {
+			listeners.add(eventListener);
+		}
+	}
+
+	public static synchronized void removeListener(EventListener eventListener) {
+		if (getListeners().indexOf(eventListener) != -1) {
+			listeners.remove(eventListener);
+		}
+	}
+
+	public static synchronized void callEvent(final Class<?> caller, String event) {
+		callEvent(caller, event, true);
+	}
+
+	public static synchronized void callEvent(final Class<?> caller, String event, boolean doAsynch) {
+		if (doAsynch) {
+			callEventByAsynch(caller, event);
+		} else {
+			callEventBySynch(caller, event);
+		}
+	}
+
+	private static synchronized void callEventByAsynch(final Class<?> caller, final String event) {
+		ExecutorService executorService = Executors.newFixedThreadPool(MAX_THREAD_POOL);
+
+		LOGGER.info("[Event occur : <{}> by <{}>]", new Object[] { event, caller.getName() });
+
+		for (final EventListener listener : listeners) {
+			executorService.execute(new Runnable() {
+				public void run() {
+					if (listener.getClass().getName().equals(caller.getName())) {
+						LOGGER.info("[Event skip : <{}> by self <{}>]", new Object[] { event, caller.getName() });
+					} else {
+						LOGGER.info("[Event catch : <{}> by <{}>]", new Object[] { event, listener.getClass().getName() });
+
+						listener.onEvent(event);
+					}
+				}
+			});
+		}
+
+		executorService.shutdown();
+	}
+
+	private static synchronized void callEventBySynch(final Class<?> caller, final String event) {
+		LOGGER.info("[Event occur : <{}> by <{}>]", new Object[] { event, caller.getName() });
+
+		for (final EventListener listener : listeners) {
+			if (listener.getClass().getName().equals(caller.getName())) {
+				LOGGER.info("[Event skip : <{}> by self <{}>]", new Object[] { event, caller.getName() });
+			} else {
+				LOGGER.info("[Event catch : <{}> by <{}>]", new Object[] { event, listener.getClass().getName() });
+
+				listener.onEvent(event);
+			}
+		}
+	}
+}
+```
+
+사용 방법은 다음과 같다.
+
+ListenerA, ListenerB 클래스를 아래와 같이 선언하고
+
+```java:ListenerA.java
+package org.silentsoft.blog.event;
+
+import org.silentsoft.io.event.EventHandler;
+import org.silentsoft.io.event.EventListener;
+
+public class ListenerA implements EventListener {
+	public ListenerA() {
+		EventHandler.addListener(this);
+	}
+
+	@Override
+	public void onEvent(String event) {
+		if (event.equals("EVENT_A")) {
+			// do something here for EVENT_A event.
+			System.out.println("I am A !");
+		}
+	}
+}
+```
+
+```java:ListenerB.java
+package org.silentsoft.blog.event;
+
+import org.silentsoft.io.event.EventHandler;
+import org.silentsoft.io.event.EventListener;
+
+public class ListenerB implements EventListener {
+	public ListenerB() {
+		EventHandler.addListener(this);
+	}
+
+	@Override
+	public void onEvent(String event) {
+		if (event.equals("EVENT_B")) {
+			// do something here for EVENT_B event.
+			System.out.println("I am B !");
+		}
+	}
+}
+```
+
+아래와 같이 이벤트를 호출하면 된다.
+
+```java
+package org.silentsoft.blog.event;
+
+import org.silentsoft.io.event.EventHandler;
+
+public class Example {
+	public static void main(String[] args) {
+		ListenerA listenerA = new ListenerA();
+		ListenerB listenerB = new ListenerB();
+
+		EventHandler.callEvent(Example.class, "EVENT_A", false); // 동기 호출
+		System.out.println("After introduce ListenerA");
+		EventHandler.callEvent(Example.class, "EVENT_B"); // 비동기 호출
+	}
+}
+```
+
+EventHandler.callEvent() 메소드의
+
+1번째 파라메터는 호출자이다. 누가 호출했는지 trace하기 위해서..
+
+2번째 파라메터는 호출 할 이벤트 명이고,
+
+3번째 파라메터에 따라 동기/비동기 방식으로 호출되고, 없을 경우 비동기로 호출한다.
+
+앞에서 설명했지만, 동기 방식으로 호출할 경우 그다음 라인은 반드시 이벤트 처리가 끝나야만 수행된다.
+
+예제를 위하여 이벤트 명을 하드 코딩했지만, 영향도 분석 및 파악을 위하여 이벤트는 가능하면 EventConst 같은 클래스를 만들어서 한 곳에 선언하는 것을 추천한다.
+
+\+ Bonus.
+
+EventHandler 클래스에 주석을 남겼지만.. 멀티 스레드 환경에서 ConcurrentModificationException을 피하기 위해 ArrayList 대신 CopyOnWriteArrayList를 사용해야 한다.

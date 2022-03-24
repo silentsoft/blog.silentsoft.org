@@ -1,0 +1,203 @@
+---
+title: 'Java에서 관리자 권한으로 실행하기'
+date: '2015-10-31'
+lastmod: '2015-10-31'
+tags: ['programming', 'java']
+---
+
+Java에서 관리자 권한으로 프로그램을 실행하거나, cmd 명령어를 실행하고 싶을 때가 종종 있다.
+
+shell32.dll의 ShellExecuteEx 함수를 이용하면 Java에서 할 수 있다.
+
+> **ShellExecuteEx**
+>
+> 지정된 파일에 대해 작업을 수행해주는 함수.
+
+그런데 이 녀석, DLL 함수이다. Java에서 DLL을 참조하기 위해서 JNA 라이브러리를 사용해야 한다.
+
+> **JNA (Java Native Access)**
+>
+> Java에서 Native 영역으로 Access 시켜준다.
+
+Maven으로 아래의 디펜던시를 추가하거나,
+
+```xml
+<dependency>
+    <groupId>net.java.dev.jna</groupId>
+    <artifactId>jna</artifactId>
+    <version>4.2.1</version>
+</dependency>
+```
+
+혹은, [링크](http://central.maven.org/maven2/net/java/dev/jna/jna/4.2.1/jna-4.2.1.jar)로 바로 다운받아서 프로젝트의 Build Path에 추가할 수도 있다.
+
+JNA를 추가했다면, 이제 shell32.dll을 사용하기 위해서 인터페이스를 만들어야 한다. 정석대로라면 StdCallLibrary 인터페이스를 상속받아서 인터페이스를 만들어야 하지만, JNA에서는 Shell32 인터페이스를 지원하기때문에 Shell32 인터페이스를 사용 할 거다.
+
+그런데 이 Shell32 인터페이스에는 쓰고싶은 ShellExecuteEx 함수가 정의되어 있지 않기 때문에 새로운 클래스 Shell32X를 만들어서 Shell32 인터페이스를 상속받은 다음 ShellExecuteEx 메소드를 정의해야 한다.
+
+만약, JNA에서 지원하는 여러가지 인터페이스에 쓰고싶은 함수가 이미 정의되어 있다면, 굳이 새로운 인터페이스를 만들어서 상속받을 필요는 없다.
+
+```java:Shell32X.java
+package org.silentsoft.core.util.elevator.extend;
+
+import java.util.Arrays;
+import java.util.List;
+
+import com.sun.jna.Native;
+import com.sun.jna.Pointer;
+import com.sun.jna.Structure;
+import com.sun.jna.WString;
+import com.sun.jna.platform.win32.Shell32;
+import com.sun.jna.platform.win32.WinDef.HINSTANCE;
+import com.sun.jna.platform.win32.WinDef.HWND;
+import com.sun.jna.platform.win32.WinNT.HANDLE;
+import com.sun.jna.platform.win32.WinReg.HKEY;
+import com.sun.jna.win32.W32APIOptions;
+
+public interface Shell32X extends Shell32 {
+	Shell32X INSTANCE = (Shell32X) Native.loadLibrary("shell32", Shell32X.class, W32APIOptions.UNICODE_OPTIONS);
+
+	int SW_HIDE = 0;
+	int SW_MAXIMIZE = 3;
+	int SW_MINIMIZE = 6;
+	int SW_RESTORE = 9;
+	int SW_SHOW = 5;
+	int SW_SHOWDEFAULT = 10;
+	int SW_SHOWMAXIMIZED = 3;
+	int SW_SHOWMINIMIZED = 2;
+	int SW_SHOWMINNOACTIVE = 7;
+	int SW_SHOWNA = 8;
+	int SW_SHOWNOACTIVATE = 4;
+	int SW_SHOWNORMAL = 1;
+
+	/** File not found. */
+	int SE_ERR_FNF = 2;
+
+	/** Path not found. */
+	int SE_ERR_PNF = 3;
+
+	/** Access denied. */
+	int SE_ERR_ACCESSDENIED = 5;
+
+	/** Out of memory. */
+	int SE_ERR_OOM = 8;
+
+	/** DLL not found. */
+	int SE_ERR_DLLNOTFOUND = 32;
+
+	/** Cannot share an open file. */
+	int SE_ERR_SHARE = 26;
+
+	int SEE_MASK_NOCLOSEPROCESS = 0x00000040;
+
+	int ShellExecute(int i, String lpVerb, String lpFile, String lpParameters,
+			String lpDirectory, int nShow);
+
+	boolean ShellExecuteEx(SHELLEXECUTEINFO lpExecInfo);
+
+	public static class SHELLEXECUTEINFO extends Structure {
+		/*
+		 * DWORD cbSize; ULONG fMask; HWND hwnd; LPCTSTR lpVerb; LPCTSTR lpFile;
+		 * LPCTSTR lpParameters; LPCTSTR lpDirectory; int nShow; HINSTANCE
+		 * hInstApp; LPVOID lpIDList; LPCTSTR lpClass; HKEY hkeyClass; DWORD
+		 * dwHotKey; union { HANDLE hIcon; HANDLE hMonitor; } DUMMYUNIONNAME;
+		 * HANDLE hProcess;
+		 */
+
+		public int cbSize = size();
+		public int fMask;
+		public HWND hwnd;
+		public WString lpVerb;
+		public WString lpFile;
+		public WString lpParameters;
+		public WString lpDirectory;
+		public int nShow;
+		public HINSTANCE hInstApp;
+		public Pointer lpIDList;
+		public WString lpClass;
+		public HKEY hKeyClass;
+		public int dwHotKey;
+
+		/*
+		 * Actually: union { HANDLE hIcon; HANDLE hMonitor; } DUMMYUNIONNAME;
+		 */
+		public HANDLE hMonitor;
+		public HANDLE hProcess;
+
+		protected List getFieldOrder() {
+			return Arrays.asList(new String[] { "cbSize", "fMask", "hwnd",
+					"lpVerb", "lpFile", "lpParameters", "lpDirectory", "nShow",
+					"hInstApp", "lpIDList", "lpClass", "hKeyClass", "dwHotKey",
+					"hMonitor", "hProcess", });
+		}
+	}
+}
+```
+
+그리고 이 Shell32X 인터페이스를 호출해주는 Elevator 클래스를 만들자.
+
+```java:Elevator.java
+package org.silentsoft.core.util.elevator.core;
+
+import org.silentsoft.core.util.elevator.extend.Shell32X;
+import org.silentsoft.core.util.elevator.extend.Shell32X.SHELLEXECUTEINFO;
+
+import com.sun.jna.WString;
+import com.sun.jna.platform.win32.Kernel32;
+import com.sun.jna.platform.win32.Kernel32Util;
+
+public class Elevator {
+	public static void executeAsAdmin(String command, String args) {
+		SHELLEXECUTEINFO execInfo = new SHELLEXECUTEINFO();
+		execInfo.lpFile = new WString(command);
+		if (args != null) {
+			execInfo.lpParameters = new WString(args);
+		}
+		execInfo.nShow = Shell32X.SW_SHOWDEFAULT;
+		execInfo.fMask = Shell32X.SEE_MASK_NOCLOSEPROCESS;
+		execInfo.lpVerb = new WString("runas");
+		boolean result = Shell32X.INSTANCE.ShellExecuteEx(execInfo);
+
+		if (!result) {
+			int lastError = Kernel32.INSTANCE.GetLastError();
+			String errorMessage = Kernel32Util.formatMessageFromLastErrorCode(lastError);
+			throw new RuntimeException("Error performing elevation: " + lastError + ": " + errorMessage + " (apperror=" + execInfo.hInstApp + ")");
+		}
+	}
+}
+```
+
+이제 Elevator 클래스를 이용하여 cmd 명령을 수행하거나, 프로그램을 실행할 수 있다.
+
+cmd 명령을 수행하는 메소드이다.
+
+```java
+public static void runCommand(String command) throws IOException {
+	Runtime.getRuntime().exec("cmd /C " + command);
+}
+
+public static void runCommandAsAdmin(String command) {
+	Elevator.executeAsAdmin("c:\\windows\\system32\\cmd.exe", "/C " + command);
+}
+```
+
+프로그램을 실행하는 메소드이다.
+
+```java
+public static void runProgram(String target, String args) throws IOException {
+	args = (args == null) ? "" : args;
+	Runtime.getRuntime().exec("cmd /C start " + target + " " + args);
+}
+
+public static void runProgramAsAdmin(String target, String args) {
+	args = (args == null) ? "" : args;
+	Elevator.executeAsAdmin("c:\\windows\\system32\\cmd.exe", "/C start " + target + " " + args);
+}
+```
+
+이외에도 JNA를 이용하면 자바로 재미난 것을 많이 할 수 있다.
+
+참조 글 :
+
+- [MSDN](<https://msdn.microsoft.com/ko-kr/library/windows/desktop/bb762153(v=vs.85).aspx>)
+- [stackoverflow.com](http://stackoverflow.com/questions/11041509/elevating-a-processbuilder-process-via-uac/11042773#11042773)

@@ -1,123 +1,228 @@
-# Hydejack
-[![Gem Version](https://badge.fury.io/rb/jekyll-theme-hydejack.svg)](https://badge.fury.io/rb/jekyll-theme-hydejack)
+![tailwind-nextjs-banner](/public/static/images/twitter-card.png)
 
-**Hydejack** is a Jekyll theme with JavaScript powers, combining the best of static sites and modern web apps.
-It features a suite of JavaScript that makes the page feel like an app, without sacrificing backwards-compatibility,
-page-load speed or SEO.
+# Tailwind Nextjs Starter Blog
 
-> Your presence on the web — A [blog], a [portfolio] and a [resume].
+[![GitHub Repo stars](https://img.shields.io/github/stars/timlrx/tailwind-nextjs-starter-blog?style=social)](https://GitHub.com/timlrx/tailwind-nextjs-starter-blog/stargazers/)
+[![GitHub forks](https://img.shields.io/github/forks/timlrx/tailwind-nextjs-starter-blog?style=social)](https://GitHub.com/timlrx/tailwind-nextjs-starter-blog/network/)
+[![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Ftimlrxx)](https://twitter.com/timlrxx)
+[![Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&link=https://github.com/sponsors/timlrx)](https://github.com/sponsors/timlrx)
 
-**Hydejack** aims to be the complete package for professionals on the web.
-It features a blog suitable for both prose and technical documentation,
-a showcase for your projects, and a resume that fits with the rest of the design.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/timlrx/tailwind-nextjs-starter-blog)
 
-![Screenshot](https://qwtel.com/assets/img/projects/default.jpg)
+This is a [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/) blogging starter template. Probably the most feature-rich Next.js markdown blogging template out there. Comes out of the box configured with the latest technologies to make technical writing a breeze. Easily configurable and customizable. Perfect as a replacement to existing Jekyll and Hugo individual blogs.
 
-## Demo
-It's best to just [see it in action](https://qwtel.com/hydejack/).
+Check out the documentation below to get started.
+
+Facing issues? Check the [FAQ page](https://github.com/timlrx/tailwind-nextjs-starter-blog/wiki) and do a search on past issues. Feel free to open a new issue if none has been posted previously.
+
+Feature request? Check the past discussions to see if it has been brought up previously. Otherwise, feel free to start a new discussion thread. All ideas are welcomed!
+
+## Examples
+
+- [Demo Blog](https://tailwind-nextjs-starter-blog.vercel.app/) - this repo
+- [My personal blog](https://www.timlrx.com) - modified to auto-generate blog posts with dates
+- [Aloisdg's cookbook](https://tambouille.vercel.app/) - with pictures and recipes!
+- [GautierArcin's demo with next translate](https://tailwind-nextjs-starter-blog-seven.vercel.app/) - includes translation of mdx posts, [source code](https://github.com/GautierArcin/tailwind-nextjs-starter-blog/tree/demo/next-translate)
+- [David Levai's digital garden](https://davidlevai.com/) - customized design and added email subscriptions
+- [Thinh's Corner](https://thinhcorner.com/) - [customized layout](https://github.com/Th1nhNg0/th1nhng0.vercel.app/blob/5e73a420828d82f01e7147512a2c3273c4ec19f8/layouts/PostLayout.js) with sticky side table of contents
+- [Leo's Blog](https://leohuynh.dev) - Tuan Anh Huynh's personal site. Add Snippets Page, Author Profile Card, Image Lightbox, ...
+- [thvu.dev](https://thvu.dev) - Added `mdx-embed`, view count, reading minutes and more.
+- [fiqrychoerudin.dev](https://www.fiqrychoerudin.dev/) - simple portfolio.
+- [irvin.dev](https://www.irvin.dev/) - Irvin Lin's personal site. Added YouTube embedding.
+- [the all JavaScript Blog](https://the-all-javascript-blog.vercel.app/) - a JavaScript enlightenment blog uses this
+- [KirillSo.com](https://www.kirillso.com/) - Personal blog & website.
+- [DevBoy Blog](https://devboy.vercel.app/) - M.Reza's personal blog
+- [slightlysharpe.com](https://slightlysharpe.com) - [Tincre's](https://tincre.com) main company blog
+- [blog.b00st.com](https://blog.b00st.com) - [b00st.com's](https://b00st.com) main music promotion blog
+- [astrosaurus.me](https://astrosaurus.me/) - Ephraim Atta-Duncan's Personal Blog
+- [dhanrajsp.me](https://dhanrajsp.me/) - Dhanraj's personal site and blog.
+- [blog.r00ks.io](https://blog.r00ks.io/) - Austin Rooks's personal blog ([source code](https://github.com/Austionian/blog.r00ks)).
+- [honghong.me](https://honghong.me) - Tszhong's personal website ([source code](https://github.com/tszhong0411/home))
+- [alfoncode.com](https://alfoncode.com) - Alfonso García's personar website. Customized design ([source code](https://github.com/alfoncode/personal-web))
+- [marceloformentao.dev](https://marceloformentao.dev) - Marcelo Formentão personal website ([source code](https://github.com/marceloavf/marceloformentao.dev)).
+- [abiraja.com](https://www.abiraja.com/) - with a [runnable JS code snippet component!](https://www.abiraja.com/blog/querying-solana-blockchain)
+- [einargudni.com](https://www.einargudni.com) - with a customized theme, command pallette and more ([source code](https://github.com/einargudnig/einargudni.com))
+- [bpiggin.com](https://www.bpiggin.com) - Ben Piggin's personal blog
+- [maqib.cn](https://maqib.cn) - A blog of Chinese front-end developers 狂奔小马的博客 ([源码](https://github.com/maqi1520/nextjs-tailwind-blog))
+
+Using the template? Feel free to create a PR and add your blog to this list.
+
+## Motivation
+
+I wanted to port my existing blog to Nextjs and Tailwind CSS but there was no easy out of the box template to use so I decided to create one. Design is adapted from [Tailwindlabs blog](https://github.com/tailwindlabs/blog.tailwindcss.com).
+
+I wanted it to be nearly as feature-rich as popular blogging templates like [beautiful-jekyll](https://github.com/daattali/beautiful-jekyll) and [Hugo Academic](https://github.com/wowchemy/wowchemy-hugo-modules) but with the best of React's ecosystem and current web development's best practices.
 
 ## Features
-Both versions include these features:
 
-* Full in-app page loading, powered by [hy-push-state]
-* A customizable sidebar that turns into a drawer menu on mobile, powered by [hy-drawer]
-* Advanced FLIP animations, inspired by Material Design
-* Good [Google PageSpeed Score][gpss][^3]
-* Higher *perceived speed* thanks to content pre-fetching
-* [Syntax highlighting][syntax], powered by [Rouge]
-* [LaTeX math blocks][latex], powered by [KaTeX]
-* Change the wording of built-in strings and possibly translate in other languages
-* Support for categories and tags
-* Built-in icons for many social networks
-* Simple and semantic HTML — can be viewed even with text-based browsers
-* Author section below each article and support for multiple authors
-* Progressive enhancement — sacrifice features, not content
-* Google Analytics and Google Fonts support
-* Disqus comments
-* Print layout — Used to render Hydejack's [PDF documentation][pdf]
-* Blog layout via `jekyll-paginate` (optional)
-* SEO meta tags via `jekyll-seo-tag` (optional)
-* Github avatars via `jekyll-avatar` (optional)
-* Gist support via `jekyll-gist` (optional)
+- Easy styling customization with [Tailwind 3.0](https://tailwindcss.com/blog/tailwindcss-v3) and primary color attribute
+- Near perfect lighthouse score - [Lighthouse report](https://www.webpagetest.org/result/210111_DiC1_08f3670c3430bf4a9b76fc3b927716c5/)
+- Lightweight, 45kB first load JS, uses Preact in production build
+- Mobile-friendly view
+- Light and dark theme
+- Self-hosted font with [Fontsource](https://fontsource.org/)
+- Supports [plausible](https://plausible.io/), [simple analytics](https://simpleanalytics.com/) and google analytics
+- [MDX - write JSX in markdown documents!](https://mdxjs.com/)
+- Server-side syntax highlighting with line numbers and line highlighting via [rehype-prism-plus](https://github.com/timlrx/rehype-prism-plus)
+- Math display supported via [KaTeX](https://katex.org/)
+- Citation and bibliography support via [rehype-citation](https://github.com/timlrx/rehype-citation)
+- Automatic image optimization via [next/image](https://nextjs.org/docs/basic-features/image-optimization)
+- Flexible data retrieval with [mdx-bundler](https://github.com/kentcdodds/mdx-bundler)
+- Support for tags - each unique tag will be its own page
+- Support for multiple authors
+- Blog templates
+- TOC component
+- Support for nested routing of blog posts
+- Newsletter component with support for mailchimp, buttondown, convertkit, klaviyo and revue
+- Supports [giscus](https://github.com/laymonage/giscus), [utterances](https://github.com/utterance/utterances) or disqus
+- Projects page
+- Preconfigured security headers
+- SEO friendly with RSS feed, sitemaps and more!
 
-## Documentation
-Hydejack is well documented. You can read the docs [on the Jekyll site][docs], or [on GitHub][wiki], or [download the PDF][pdf].
+## Sample posts
 
-## Download
-There are two versions of **Hydejack**: The *free version* includes basic blogging functionality,
-as did previous versions of the theme.
-The *PRO version* includes additional features for professionals:
-A [portfolio], a [resume] layout and a [welcome] page to feature your favorite projects and posts.
+- [A markdown guide](https://tailwind-nextjs-starter-blog.vercel.app/blog/github-markdown-guide)
+- [Learn more about images in Next.js](https://tailwind-nextjs-starter-blog.vercel.app/blog/guide-to-using-images-in-nextjs)
+- [A tour of math typesetting](https://tailwind-nextjs-starter-blog.vercel.app/blog/deriving-ols-estimator)
+- [Simple MDX image grid](https://tailwind-nextjs-starter-blog.vercel.app/blog/pictures-of-canada)
+- [Example of long prose](https://tailwind-nextjs-starter-blog.vercel.app/blog/the-time-machine)
+- [Example of Nested Route Post](https://tailwind-nextjs-starter-blog.vercel.app/blog/nested-route/introducing-multi-part-posts-with-nested-routing)
 
-This table details what is and isn't included in each respective version.
+## Quick Start Guide
 
-|                                     | Free                                   | PRO                                          |
-|:------------------------------------|:--------------------------------------:|:--------------------------------------------:|
-| Blog                                | &#x2714;                               | &#x2714;                                     |
-| [Features][feat]                    | &#x2714;                               | &#x2714;                                     |
-| [Portfolio] Layout                  |                                        | &#x2714;                                     |
-| [Resume] Layout                     |                                        | &#x2714;                                     |
-| [Welcome] Layout                    |                                        | &#x2714;                                     |
-| [Newsletter Box][news]              |                                        | &#x2714;                                     |
-| [Custom Forms][forms]               |                                        | &#x2714;                                     |
-| No Hydejack Branding                |                                        | &#x2714;                                     |
-| License                             | [GPL-3.0][license]                     | [PRO]                                        |
-| Source                              | [GitHub][src]                          | Included                                     |
-| Support[^1]                         | No                                     | No                                           |
-| Price                               | Free                                   | $29                                          |
-|                                     | [**Download**][kit]                    | [**Buy Now - $29**][buy] [^2]                |
-{:.stretch-table}
+1. JS (official support)
 
-[^1]: You MAY open an issue on GitHub, but no response and/or fix is guaranteed.
-      You understand that using Jekyll requires technical know-how, and is NOT comparable to Wordpress in terms of usability.
-      Please use the free version to confirm that Hydejack works for you.
-      For more, see the [PRO] license.
+```bash
+npx degit https://github.com/timlrx/tailwind-nextjs-starter-blog.git
+```
 
-[^2]: Transactions secured by [Stripe](https://stripe.com). Downloads handled by [Simple Goods](https://simplegoods.co/).  
+or with TypeScript (community support)
 
-[^3]: Actual page load speed depends on your hosting provider, resolution of embedded images and usage of 3rd party plugins.  
+```bash
+npx degit timlrx/tailwind-nextjs-starter-blog#typescript
+```
 
-~~~
- __  __                __                                     __
-/\ \/\ \              /\ \             __                    /\ \
-\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
- \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
-  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
-   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
-    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
-                /\___/                \ \____/
-                \/__/                  \/___/
-~~~
+2. Personalize `siteMetadata.js` (site related information)
+3. Modify the content security policy in `next.config.js` if you want to use
+   any analytics provider or a commenting solution other than giscus.
+4. Personalize `authors/default.md` (main author)
+5. Modify `projectsData.js`
+6. Modify `headerNavLinks.js` to customize navigation links
+7. Add blog posts
+8. Deploy on Vercel
 
-[blog]: https://qwtel.com/hydejack/blog/
-[portfolio]: https://qwtel.com/hydejack/variations/
-[resume]: https://qwtel.com/hydejack/resume/
-[download]: https://qwtel.com/download/
-[welcome]: https://qwtel.com/hydejack/
-[forms]: https://qwtel.com/hydejack/forms-by-example/
+## Installation
 
-[feat]: https://qwtel.com/hydejack/#features
-[news]: https://qwtel.com/hydejack/#newsletter-subscription-box
-[syntax]: https://qwtel.com/hydejack/#syntax-highlighting
-[latex]: https://qwtel.com/hydejack/#latex-math-blocks
+```bash
+npm install
+```
 
-[license]: LICENSE.md
-[pro]: licenses/PRO.md
-[docs]: docs/7.5.1/index.md
+## Development
 
-[kit]: https://github.com/qwtel/hydejack-starter-kit/archive/v7.5.1.zip
-[src]: https://github.com/qwtel/hydejack
-[git]: https://github.com/qwtel/hydejack-starter-kit
-[gem]: https://rubygems.org/gems/jekyll-theme-hydejack
-[buy]: https://app.simplegoods.co/i/AQTTVBOE
+First, run the development server:
 
-[gpss]: https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fqwtel.com%2Fhydejack%2F
-[wiki]: https://github.com/qwtel/hydejack/blob/master/docs/7.5.1/index.md
-[pdf]: https://github.com/qwtel/hydejack/releases/download/v7.5.1/Documentation._.Hydejack.pdf
-[hy-push-state]: https://qwtel.com/hy-push-state/
-[hy-drawer]: https://qwtel.com/hy-drawer/
-[rouge]: http://rouge.jneen.net
-[katex]: https://khan.github.io/KaTeX/
-[tinyletter]: https://tinyletter.com/
+```bash
+npm start
+```
 
-*[FLIP]: First-Last-Invert-Play. A coding technique to achieve performant page transition animations.
+or
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+
+## Extend / Customize
+
+`data/siteMetadata.js` - contains most of the site related information which should be modified for a user's need.
+
+`data/authors/default.md` - default author information (required). Additional authors can be added as files in `data/authors`.
+
+`data/projectsData.js` - data used to generate styled card on the projects page.
+
+`data/headerNavLinks.js` - navigation links.
+
+`data/logo.svg` - replace with your own logo.
+
+`data/blog` - replace with your own blog posts.
+
+`public/static` - store assets such as images and favicons.
+
+`tailwind.config.js` and `css/tailwind.css` - contain the tailwind stylesheet which can be modified to change the overall look and feel of the site.
+
+`css/prism.css` - controls the styles associated with the code blocks. Feel free to customize it and use your preferred prismjs theme e.g. [prism themes](https://github.com/PrismJS/prism-themes).
+
+`components/social-icons` - to add other icons, simply copy an svg file from [Simple Icons](https://simpleicons.org/) and map them in `index.js`. Other icons use [heroicons](https://heroicons.com/).
+
+`components/MDXComponents.js` - pass your own JSX code or React component by specifying it over here. You can then call them directly in the `.mdx` or `.md` file. By default, a custom link and image component is passed.
+
+`layouts` - main templates used in pages.
+
+`pages` - pages to route to. Read the [Next.js documentation](https://nextjs.org/docs) for more information.
+
+`next.config.js` - configuration related to Next.js. You need to adapt the Content Security Policy if you want to load scripts, images etc. from other domains.
+
+## Post
+
+### Frontmatter
+
+Frontmatter follows [Hugo's standards](https://gohugo.io/content-management/front-matter/).
+
+Currently 7 fields are supported.
+
+```
+title (required)
+date (required)
+tags (required, can be empty array)
+lastmod (optional)
+draft (optional)
+summary (optional)
+images (optional, if none provided defaults to socialBanner in siteMetadata config)
+authors (optional list which should correspond to the file names in `data/authors`. Uses `default` if none is specified)
+layout (optional list which should correspond to the file names in `data/layouts`)
+canonicalUrl (optional, canonical url for the post for SEO)
+```
+
+Here's an example of a post's frontmatter:
+
+```
+---
+title: 'Introducing Tailwind Nexjs Starter Blog'
+date: '2021-01-12'
+lastmod: '2021-01-18'
+tags: ['next-js', 'tailwind', 'guide']
+draft: false
+summary: 'Looking for a performant, out of the box template, with all the best in web technology to support your blogging needs? Checkout the Tailwind Nextjs Starter Blog template.'
+images: ['/static/images/canada/mountains.jpg', '/static/images/canada/toronto.jpg']
+authors: ['default', 'sparrowhawk']
+layout: PostLayout
+canonicalUrl: https://tailwind-nextjs-starter-blog.vercel.app/blog/introducing-tailwind-nextjs-starter-blog
+---
+```
+
+### Compose
+
+Run `node ./scripts/compose.js` to bootstrap a new post.
+
+Follow the interactive prompt to generate a post with pre-filled front matter.
+
+## Deploy
+
+**Vercel**  
+The easiest way to deploy the template is to use the [Vercel Platform](https://vercel.com) from the creators of Next.js. Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+**Netlify / GitHub Pages / Firebase etc.**  
+As the template uses `next/image` for image optimization, additional configurations have to be made to deploy on other popular static hosting websites like [Netlify](https://www.netlify.com/) or [GitHub Pages](https://pages.github.com/). An alternative image optimization provider such as Imgix, Cloudinary or Akamai has to be used. Alternatively, replace the `next/image` component with a standard `<img>` tag. See [`next/image` documentation](https://nextjs.org/docs/basic-features/image-optimization) for more details.
+
+The API routes used in the newsletter component cannot be used in a static site export. You will need to use a form API endpoint provider and substitute the route in the newsletter component accordingly. Other hosting platforms such as Netlify also offer alternative solutions - please refer to their docs for more information.
+
+## Support
+
+Using the template? Support this effort by giving a star on GitHub, sharing your own blog and giving a shoutout on Twitter or becoming a project [sponsor](https://github.com/sponsors/timlrx).
+
+## Licence
+
+[MIT](https://github.com/timlrx/tailwind-nextjs-starter-blog/blob/master/LICENSE) © [Timothy Lin](https://www.timrlx.com)
