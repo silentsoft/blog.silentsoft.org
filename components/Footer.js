@@ -8,14 +8,16 @@ export default function Footer() {
   return (
     <footer>
       <div className="mt-16 flex flex-col items-center">
-        <div className="mb-3 flex">
-          <Link href="https://hits.sh/blog.silentsoft.org/">
-            <img
-              alt="Hits"
-              src="https://hits.sh/blog.silentsoft.org.svg?view=today-total&style=flat-square&label=visitors&color=171717&labelColor=171717"
-            />
-          </Link>
-        </div>
+        {process.env.NODE_ENV === 'production' && (
+          <div className="mb-3 flex">
+            <Link href="https://hits.sh/blog.silentsoft.org/">
+              <img
+                alt="Hits"
+                src="https://hits.sh/blog.silentsoft.org.svg?view=today-total&style=flat-square&label=visitors&color=171717&labelColor=171717"
+              />
+            </Link>
+          </div>
+        )}
         <div className="mb-3 flex space-x-4">
           <SocialIcon
             title="Email"
