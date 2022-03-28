@@ -16,10 +16,10 @@ const ContentSecurityPolicy = `
 
 const securityHeaders = [
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
-  // {
-  //   key: 'Content-Security-Policy',
-  //   value: ContentSecurityPolicy.replace(/\n/g, ''),
-  // },
+  {
+    key: 'Content-Security-Policy',
+    value: ContentSecurityPolicy.replace(/\n/g, ''),
+  },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
   {
     key: 'Referrer-Policy',
@@ -58,14 +58,14 @@ module.exports = withBundleAnalyzer({
   eslint: {
     dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
   },
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: securityHeaders,
-      },
-    ]
-  },
+  // async headers() {
+  //   return [
+  //     {
+  //       source: '/(.*)',
+  //       headers: securityHeaders,
+  //     },
+  //   ]
+  // },
   webpack: (config, { dev, isServer }) => {
     config.module.rules.push({
       test: /\.svg$/,
