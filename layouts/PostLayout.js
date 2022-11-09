@@ -143,38 +143,6 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                   &larr; Back to the archives
                 </Link>
               </div>
-              <div className="py-4 xl:py-8">
-                <script
-                  async
-                  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7290470789990542"
-                  crossOrigin="anonymous"
-                />
-                <ins
-                  className="adsbygoogle"
-                  style={{ display: 'block' }}
-                  data-ad-client="ca-pub-7290470789990542"
-                  data-ad-slot="2167874287"
-                  data-ad-format="auto"
-                  data-full-width-responsive="true"
-                />
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-              </div>
-              <div className="py-4 xl:py-8">
-                <script
-                  async
-                  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7290470789990542"
-                  crossOrigin="anonymous"
-                />
-                <ins
-                  className="adsbygoogle"
-                  style={{ display: 'block' }}
-                  data-ad-client="ca-pub-7290470789990542"
-                  data-ad-slot="9731503687"
-                  data-ad-format="auto"
-                  data-full-width-responsive="true"
-                />
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-              </div>
             </footer>
           </div>
         </div>
