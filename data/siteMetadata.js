@@ -7,8 +7,8 @@ const siteMetadata = {
   theme: 'system', // system, dark or light
   siteUrl: 'https://blog.silentsoft.org',
   siteRepo: 'https://github.com/silentsoft/blog.silentsoft.org',
-  seoImage: '/static/images/avatar.jpg',
-  rssImage: '/static/images/avatar.jpg',
+  seoImage: '/static/images/avatar.jpeg',
+  rssImage: '/static/images/avatar.jpeg',
   socialBanner: '/static/images/twitter-card.png',
   email: 'contact@silentsoft.org',
   github: 'https://github.com/silentsoft',
